@@ -1,0 +1,10 @@
+# 01
+transformers
+gradio
+# --index-url https://download.pytorch.org/whl/cu118
+torch
+torchvision
+torchaudio
+
+# 02
+youtube-transcript-api
