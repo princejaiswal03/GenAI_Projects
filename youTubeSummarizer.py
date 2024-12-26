@@ -1,19 +1,28 @@
 import os
 import re
-
+import gradio as gr
 import torch
 from transformers import pipeline
 from youtube_transcript_api import YouTubeTranscriptApi
-from youtube_transcript_api._errors import TranscriptsDisabled, VideoUnavailable, NoTranscriptFound
+from youtube_transcript_api._errors import (
+    TranscriptsDisabled,
+    VideoUnavailable,
+    NoTranscriptFound,
+)
 from youtube_transcript_api.formatters import TextFormatter
 
-os.environ['HF_HOME'] = 'E:\Self\GenAI_Projects\models'
+# summarization_pipe = pipeline(
+#     task="summarization",
+#     model="facebook/bart-large-cnn",
+#     torch_dtype=torch.bfloat16,
+#     device=0,
+# )
 
-summarization_pipe = pipeline(task="summarization", model="facebook/bart-large-cnn", torch_dtype=torch.bfloat16)
 
-
-# model_path = "models/models--sshleifer--distilbart-cnn-12-6/snapshots/a4f8f3ea906ed274767e9906dbaede7531d660ff"
-# summarization_pipe = pipeline(task="summarization", model=model_path, torch_dtype=torch.bfloat16)
+model_path = "models/models--facebook--bart-large-cnn/snapshots/37f520fa929c961707657b28798b30c003dd100b"
+summarization_pipe = pipeline(
+    task="summarization", model=model_path, torch_dtype=torch.bfloat16
+)
 
 
 def extract_video_id(youtube_url):
@@ -43,8 +52,10 @@ def get_youtube_transcript(youtube_url):
         formatter = TextFormatter()
         text_transcript = formatter.format_transcript(transcript)
 
-        youtube_summary = summarization_pipe(text_transcript, max_length=150, min_length=30, do_sample=False)
-        return youtube_summary[0]['summary_text']
+        youtube_summary = summarization_pipe(
+            text_transcript, max_length=150, min_length=30, do_sample=False
+        )
+        return youtube_summary[0]["summary_text"]
     except TranscriptsDisabled:
         return "Transcript is disabled for this video."
     except VideoUnavailable:
@@ -55,19 +66,11 @@ def get_youtube_transcript(youtube_url):
         return f"An error occurred: {e}"
 
 
-def main():
-    youtube_url = input("Enter the YouTube video URL: ")
-    transcript = get_youtube_transcript(youtube_url)
-
-    if isinstance(transcript, list):
-        # Print transcript in a readable format
-        print("Transcript:")
-        for entry in transcript:
-            print(f"{entry['start']:.2f}s: {entry['text']}")
-    else:
-        # Print error message
-        print(transcript)
-
-
-if __name__ == "__main__":
-    main()
+grad_interface = gr.Interface(
+    fn=get_youtube_transcript,
+    inputs=gr.Textbox(label="Input your URL here: ", lines=1),
+    outputs=gr.Textbox(label="Output summary is here: ", lines=10),
+    title="Text Summarization Demo Project",
+    description="This will summarize the video transcript",
+)
+grad_interface.launch(share=True)

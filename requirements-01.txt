@@ -8,3 +8,18 @@ torchaudio
 
 # 02
 youtube-transcript-api
+
+# 03
+openpyxl
+pandas
+matplotlib
+
+#04
+timm
+
+streamlit
+
+
+#05
+espeak
+phonemizer
