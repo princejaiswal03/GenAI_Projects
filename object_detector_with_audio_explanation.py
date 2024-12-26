@@ -142,7 +142,7 @@ demo = gr.Interface(
         gr.Image(label="Processed Image", type="pil"),
         gr.Audio(label="Generated Audio"),
     ],
-    title="@GenAILearniverse Project 7: Object Detector with Audio",
+    title="Project 7: Object Detector with Audio",
     description="THIS APPLICATION WILL BE USED TO HIGHLIGHT OBJECTS AND GIVES AUDIO DESCRIPTION FOR THE PROVIDED INPUT IMAGE.",
 )
 demo.launch()

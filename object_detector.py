@@ -77,7 +77,7 @@ demo = gr.Interface(
     fn=detect_object,
     inputs=[gr.Image(label="Select Image", type="pil")],
     outputs=[gr.Image(label="Processed Image", type="pil")],
-    title="@GenAILearniverse Project 6: Object Detector",
+    title="Project 6: Object Detector",
     description="THIS APPLICATION WILL BE USED TO DETECT OBJECTS INSIDE THE PROVIDED INPUT IMAGE.",
 )
 demo.launch()

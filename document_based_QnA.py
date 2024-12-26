@@ -58,7 +58,7 @@ demo = gr.Interface(
         gr.Textbox(label="Input your question", lines=1),
     ],
     outputs=[gr.Textbox(label="Answer text", lines=1)],
-    title="@GenAILearniverse Project 5: Document Q & A",
+    title="Project 5: Document Q & A",
     description="THIS APPLICATION WILL BE USED TO ANSER QUESTIONS BASED ON CONTEXT PROVIDED.",
 )
 

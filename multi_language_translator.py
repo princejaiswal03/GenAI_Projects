@@ -43,7 +43,7 @@ demo = gr.Interface(
         ),
     ],
     outputs=[gr.Textbox(label="Translated text", lines=4)],
-    title="@GenAILearniverse Project 4: Multi language translator",
+    title="Project 4: Multi language translator",
     description="THIS APPLICATION WILL BE USED TO TRNSLATE ANY ENGLIST TEXT TO MULTIPLE LANGUAGES.",
 )
 demo.launch()

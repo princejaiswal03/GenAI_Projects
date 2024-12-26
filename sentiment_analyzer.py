@@ -64,7 +64,7 @@ demo = gr.Interface(
     fn=read_reviews_and_analyze_sentiment,
     inputs=[gr.File(file_types=["xlsx"], label="Upload your review comment file")],
     outputs=[gr.Dataframe(label="Sentiments"), gr.Plot(label="Sentiment Analysis")],
-    title="@GenAILearniverse Project 3: Sentiment Analyzer",
+    title="Project 3: Sentiment Analyzer",
     description="THIS APPLICATION WILL BE USED TO ANALYZE THE SENTIMENT BASED ON FILE UPLAODED.",
 )
 demo.launch()
