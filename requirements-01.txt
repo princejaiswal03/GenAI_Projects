@@ -23,3 +23,8 @@ streamlit
 #05
 espeak
 phonemizer
+
+# 06
+flask
+
+langchain
