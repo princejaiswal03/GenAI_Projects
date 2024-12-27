@@ -27,4 +27,7 @@ phonemizer
 # 06
 flask
 
+# 07
 langchain
+langchain-community
+langchain-core
